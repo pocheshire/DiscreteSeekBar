@@ -2,13 +2,14 @@
 using Android.Content;
 using Android.Graphics;
 using Android.OS;
+using Android.Runtime;
 using Android.Util;
 using Android.Views;
-using DiscreteSeekBar.Internal.Drawable;
 using Android.Widget;
-using DiscreteSeekBar.Internal.Compat;
+using DSB.Internal.Compat;
+using DSB.Internal.Drawable;
 
-namespace DiscreteSeekBar.Internal
+namespace DSB.Internal
 {
     public class PopupIndicator
     {
@@ -25,7 +26,7 @@ namespace DiscreteSeekBar.Internal
 
         public PopupIndicator(Context context, IAttributeSet attrs, int defStyleAttr, String maxValue, int thumbSize, int separation)
         {
-            mWindowManager = (IWindowManager)context.GetSystemService(Context.WindowService);
+            mWindowManager = context.GetSystemService(Context.WindowService).JavaCast<IWindowManager>();
             mPopupView = new Floater(context, attrs, defStyleAttr, maxValue, thumbSize, separation, mListener, DismissComplete);
         }
 

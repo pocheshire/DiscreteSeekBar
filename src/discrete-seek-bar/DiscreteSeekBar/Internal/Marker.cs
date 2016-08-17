@@ -6,9 +6,9 @@ using Android.Support.V4.View;
 using Android.Util;
 using Android.Views;
 using Android.Widget;
-using DiscreteSeekBar.Internal.Compat;
-using DiscreteSeekBar.Internal.Drawable;
-namespace DiscreteSeekBar.Internal
+using DSB.Internal.Compat;
+using DSB.Internal.Drawable;
+namespace DSB.Internal
 {
     public class Marker : ViewGroup, IMarkerAnimationListener
     {

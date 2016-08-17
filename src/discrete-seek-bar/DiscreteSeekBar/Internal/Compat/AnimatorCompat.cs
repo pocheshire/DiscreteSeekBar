@@ -1,6 +1,6 @@
 ﻿using System;
 using Android.OS;
-namespace DiscreteSeekBar.Internal.Compat
+namespace DSB.Internal.Compat
 {
     public interface IAnimationFrameUpdateListener
     {

@@ -7,7 +7,7 @@ using Android.Graphics;
 using Java.Lang;
 using Android.OS;
 
-namespace DiscreteSeekBar.Internal.Drawable
+namespace DSB.Internal.Drawable
 {
     public class AlmostRippleDrawable : StateDrawable, IAnimatable
     {

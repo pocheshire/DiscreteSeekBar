@@ -2,7 +2,7 @@
 using Android.Annotation;
 using Android.OS;
 using Android.Animation;
-namespace DiscreteSeekBar.Internal.Compat
+namespace DSB.Internal.Compat
 {
     [TargetApi(Value = (int)BuildVersionCodes.Honeycomb)]
     public class AnimatorCompatV11 : AnimatorCompat, ValueAnimator.IAnimatorUpdateListener

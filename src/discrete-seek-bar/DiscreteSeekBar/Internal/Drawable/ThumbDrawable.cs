@@ -5,7 +5,7 @@ using Java.Lang;
 using Android.Graphics;
 using Android.OS;
 
-namespace DiscreteSeekBar.Internal.Drawable
+namespace DSB.Internal.Drawable
 {
     public class ThumbDrawable : StateDrawable, IAnimatable
     {

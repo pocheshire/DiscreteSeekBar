@@ -1,6 +1,6 @@
 ﻿using System;
 using Android.Content.Res;
-namespace DiscreteSeekBar.Internal.Drawable
+namespace DSB.Internal.Drawable
 {
     public class TrackRectDrawable : StateDrawable
     {

@@ -6,8 +6,8 @@
     <ProjectGuid>{FBDB8DC8-68DE-48DE-AA70-420CBBD188F4}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
-    <RootNamespace>DiscreteSeekBar</RootNamespace>
-    <AssemblyName>DiscreteSeekBar</AssemblyName>
+    <RootNamespace>DSB</RootNamespace>
+    <AssemblyName>DSB</AssemblyName>
     <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>

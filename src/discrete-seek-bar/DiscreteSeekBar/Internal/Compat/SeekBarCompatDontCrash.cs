@@ -1,10 +1,10 @@
 ﻿using Android.Views;
-using DiscreteSeekBar.Internal.Drawable;
+using DSB.Internal.Drawable;
 using Android.Content.Res;
 using Android.Graphics.Drawables;
 using Android.Widget;
 
-namespace DiscreteSeekBar.Internal.Compat
+namespace DSB.Internal.Compat
 {
     internal class SeekBarViewOutlineProdiver : ViewOutlineProvider
     {

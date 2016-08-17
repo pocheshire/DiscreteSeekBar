@@ -6,7 +6,7 @@ using Android.Views.Animations;
 using Android.OS;
 using Java.Lang;
 
-namespace DiscreteSeekBar.Internal.Drawable
+namespace DSB.Internal.Drawable
 {
     public interface IMarkerAnimationListener
     {

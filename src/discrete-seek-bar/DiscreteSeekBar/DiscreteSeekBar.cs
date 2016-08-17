@@ -4,19 +4,21 @@ using Android.Content.Res;
 using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.OS;
+using Android.Runtime;
 using Android.Support.V4.Graphics.Drawable;
 using Android.Support.V4.View;
 using Android.Util;
 using Android.Views;
-using DiscreteSeekBar.Internal;
-using DiscreteSeekBar.Internal.Compat;
-using DiscreteSeekBar.Internal.Drawable;
+using DSB.Internal;
+using DSB.Internal.Compat;
+using DSB.Internal.Drawable;
 using Java.Lang;
 using Java.Util;
 using Math = System.Math;
 
-namespace DiscreteSeekBar
+namespace DSB
 {
+    [Register("dsb.DiscreteSeekBar")]
     public class DiscreteSeekBar : View, IAnimationFrameUpdateListener, IMarkerAnimationListener
     {
         public interface OnProgressChangeListener
@@ -232,6 +234,12 @@ namespace DiscreteSeekBar
             a.Recycle();
 
             SetNumericTransformer(new DefaultNumericTransformer());
+        }
+
+        public DiscreteSeekBar(IntPtr javaReference, JniHandleOwnership transfer)
+            : base(javaReference, transfer)
+        {
+
         }
 
         public void SetIndicatorFormatter(System.String formatter)

@@ -1,13 +1,13 @@
 ﻿using System;
 using Android.Views;
-using DiscreteSeekBar.Internal.Drawable;
+using DSB.Internal.Drawable;
 using Android.OS;
 using Android.Content.Res;
 using Drawables = Android.Graphics.Drawables;
 using Android.Support.V4.Graphics.Drawable;
 using Android.Widget;
 
-namespace DiscreteSeekBar.Internal.Compat
+namespace DSB.Internal.Compat
 {
     public static class SeekBarCompat
     {

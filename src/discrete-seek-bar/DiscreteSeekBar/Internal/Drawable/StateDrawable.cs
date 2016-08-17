@@ -4,7 +4,7 @@ using Android.Content.Res;
 using Android.Graphics;
 using System.Diagnostics.Contracts;
 
-namespace DiscreteSeekBar.Internal.Drawable
+namespace DSB.Internal.Drawable
 {
     public abstract class StateDrawable : Android.Graphics.Drawables.Drawable
     {
