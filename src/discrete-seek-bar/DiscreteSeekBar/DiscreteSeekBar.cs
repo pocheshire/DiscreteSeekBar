@@ -15,6 +15,7 @@ using DSB.Internal.Drawable;
 using Java.Lang;
 using Java.Util;
 using Math = System.Math;
+using System.Runtime.Remoting.Messaging;
 
 namespace DSB
 {
@@ -54,7 +55,7 @@ namespace DSB
         }
 
         private bool isLollipopOrGreater = Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop;
-        private const System.String DEFAULT_FORMATTER = "%d";
+        private const System.String DEFAULT_FORMATTER = "{0}";
 
         private const int PRESSED_STATE = Android.Resource.Attribute.StatePressed;
         private const int FOCUSED_STATE = Android.Resource.Attribute.StateFocused;
@@ -79,7 +80,7 @@ namespace DSB
         private bool mAllowTrackClick = true;
         private bool mIndicatorPopupEnabled = true;
         //We use our own Formatter to avoid creating new instances on every progress change
-        Formatter mFormatter;
+        //Formatter mFormatter;
         private System.String mIndicatorFormatter;
         private NumericTransformer mNumericTransformer;
         private Java.Lang.StringBuilder mFormatBuilder;
@@ -99,6 +100,20 @@ namespace DSB
         private Runnable mShowIndicatorRunnable;
 
         private IMarkerAnimationListener mFloaterListener;
+
+        private Func<int, string> _formatterFunc;
+
+        public int Progress
+        {
+            get
+            {
+                return GetProgress();
+            }
+            set
+            {
+                SetProgress(value, false);
+            }
+        }
 
         public DiscreteSeekBar(Context context)
         : this(context, null)
@@ -245,6 +260,14 @@ namespace DSB
         public void SetIndicatorFormatter(System.String formatter)
         {
             mIndicatorFormatter = formatter;
+            UpdateProgressMessage(mValue);
+        }
+
+        public void SetIndicatorFormatterFunc(Func<int, string> formatterFunc)
+        {
+            _formatterFunc = formatterFunc;
+            //We need to refresh the PopupIndicator view
+            UpdateIndicatorSizes();
             UpdateProgressMessage(mValue);
         }
 
@@ -571,22 +594,25 @@ namespace DSB
 
             //Anyways, I see the memory usage still go up on every call to this method
             //and I have no clue on how to fix that... damn Strings...
-            if (mFormatter == null || !mFormatter.Locale().Equals(Locale.Default))
-            {
-                int bufferSize = format.Length + Java.Lang.String.ValueOf(mMax).Length;
-                if (mFormatBuilder == null)
-                {
-                    mFormatBuilder = new Java.Lang.StringBuilder(bufferSize);
-                }
-                else {
-                    mFormatBuilder.EnsureCapacity(bufferSize);
-                }
-                mFormatter = new Formatter(mFormatBuilder, Locale.Default);
-            }
-            else {
-                mFormatBuilder.SetLength(0);
-            }
-            return mFormatter.Format(format, value).ToString();
+
+            //if (mFormatter == null || !mFormatter.Locale().Equals(Locale.Default))
+            //{
+            //    int bufferSize = format.Length + Java.Lang.String.ValueOf(mMax).Length;
+            //    if (mFormatBuilder == null)
+            //    {
+            //        mFormatBuilder = new Java.Lang.StringBuilder(bufferSize);
+            //    }
+            //    else {
+            //        mFormatBuilder.EnsureCapacity(bufferSize);
+            //    }
+            //    mFormatter = new Formatter(mFormatBuilder, Locale.Default);
+            //}
+            //else {
+            //    mFormatBuilder.SetLength(0);
+            //}
+            //return mFormatter.Format(format, value).ToString();
+
+            return _formatterFunc != null ? _formatterFunc.Invoke(value) : string.Format(format, value);
         }
 
         public override bool OnTouchEvent(MotionEvent e)
